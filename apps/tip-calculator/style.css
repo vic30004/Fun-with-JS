@@ -1,0 +1,46 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.wrapper{
+    display: flex;
+    flex-flow: column;
+    padding: 3rem 0;
+    background: #111;
+    color: ivory;
+    height: 100vh;
+}
+
+#tipAmount{
+    text-align: center;
+}
+
+.output{
+    margin: 1rem auto;
+    display: flex;
+}
+
+.output input{
+    margin: 0 1rem;
+}
+
+.output input,.output select, .output button{
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.output select{
+    margin-right: 1rem;
+}
+
+
+.output button{
+    padding: 0 1rem;
+    background:rgb(82, 6, 6) ;
+    color: ivory;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+}

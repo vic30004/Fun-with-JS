@@ -10,6 +10,7 @@ tipVal.addEventListener('change',()=>{
         otherIn.innerHTML=newInput
       
     }else{
+        otherIn.innerHTML=``
         return
     }
 })
@@ -17,8 +18,13 @@ tipVal.addEventListener('change',()=>{
 
 
 tipBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+   
     let tipValue=document.querySelector('input').value;
-    console.log(tipVal.value)
+    if(tipValue==='' || Math.sign(tipValue)===-1){
+        tipAmtDisplay.innerHTML=`<h1 class='error'>Please add a valid amount</h1>`;
+        return
+    }
     let totalTip=0;
     tipMsg=''
     switch (tipVal.value){
@@ -57,10 +63,8 @@ tipBtn.addEventListener('click',(e)=>{
                 return
                 
         default:
-            totalTip=(tipValue*.10).toFixed(2);
-            tipMsg = `<h1>You should tip $${totalTip} on a $${tipValue} order!</h1>`
-            tipAmtDisplay.innerHTML=tipMsg
-            return 
+            tipAmtDisplay.innerHTML=`<h1 class='error'>Please add a valid amount</h1>`;
+            return
     }
 
 })
