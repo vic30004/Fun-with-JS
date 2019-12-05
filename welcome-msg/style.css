@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100%;
+    text-align: center;
+    background: rgb(231, 198, 155);
+}
+
+.wrapper{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: 3rem auto;
+    align-items: center;
+    padding: 3rem 0;
+    background: papayawhip;
+    max-width: 50%;
+    border: 5px solid #111;
+    height: 50vh;
+    border-radius: 20px;
+    box-shadow: -5px 5px  rgb(139, 139, 139);
+}
+
+.wrapper input{
+    width: 20%;
+    padding:0.5rem 0.75rem;
+    border-radius: 20px;
+    border:none;
+    margin-bottom: 1rem;
+    outline: none;
+}
+
+.wrapper h1{
+    margin: 1rem 0;
+}
