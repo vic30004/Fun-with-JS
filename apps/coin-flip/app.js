@@ -16,7 +16,7 @@ let botScore = document.querySelector('#botScore');
 let playerScore = document.querySelector('#playerScore');
 let botOption = document.querySelector('#bChoice');
 let playerChoice = document.querySelector('#pChoice');
-
+let flipped = ''
 botScore.innerText = 0;
 playerScore.innerText = 0;
 
@@ -27,11 +27,11 @@ const randomBotChoice = () => {
 
 const flipCoin = () => {
   const { flip, heads, tails } = flipDictionary;
-
+    flipped = randomBotChoice()
   let flipGif = `<img src='${flip}'>`;
   gif.innerHTML = flipGif;
   setTimeout(() => {
-    if (randomBotChoice() === 'Heads') {
+    if (flipped === 'Heads') {
       let img = `<img src='${heads}'>`;
       return (gif.innerHTML = img);
     } else {
@@ -55,13 +55,23 @@ headsBtn.addEventListener('click', () => {
   botOption.innerText = botFlip;
   playerChoice.innerText = headsBtn.innerText;
   setTimeout(() => {
-    if (botFlip === 'Heads') {
+    if (flipped === 'Heads' && botFlip==='Heads' && headsBtn.innerText === 'Heads') {
       botScore.innerText++;
       playerScore.innerText++;
       return console.log('Bot picked Heads');
-    } else if (botFlip === 'Tails' && headsBtn.innerText === 'Heads') {
-      playerScore.innerText++;
+    }else if(flipped === 'Heads' && botFlip==='Tails' && headsBtn.innerText === 'Heads'){
+        playerScore.innerText++;
       return console.log('bot picked Tails');
+    }
+    
+    
+    else if (flipped === 'Tails' && botFlip==='Heads' && headsBtn.innerText === 'Heads') {
+      return 
+    }
+
+    else if (flipped === 'Tails' && botFlip==='Tails' && headsBtn.innerText === 'Heads'){
+        botScore.innerText++;
+        return
     }
   }, 3000);
 });
@@ -72,15 +82,24 @@ tailsBtn.addEventListener('click', () => {
   botOption.innerText = botFlip;
   playerChoice.innerText = tailsBtn.innerText;
   setTimeout(() => {
-    if (botFlip === 'Heads' && tailsBtn.innerText === 'Tails') {
-      playerScore.innerText++;
-      return console.log('Bot picked Heads');
-    } else if (botFlip === 'Tails') {
-      botScore.innerText++;
-
-      playerScore.innerText++;
-      return console.log('bot picked Tails');
-    }
+    if (flipped === 'Tails' && botFlip==='Tails' && tailsBtn.innerText === 'Tails') {
+        botScore.innerText++;
+        playerScore.innerText++;
+        return console.log('Bot picked Heads');
+      }else if(flipped === 'Tails' && botFlip==='Heads' && tailsBtn.innerText === 'Tails'){
+          playerScore.innerText++;
+        return console.log('bot picked Tails');
+      }
+      
+      
+      else if (flipped === 'Heads' && botFlip==='Heads' && tailsBtn.innerText === 'Tails') {
+        botScore.innerText++;
+          return 
+      }
+      else if (flipped === 'Heads' && botFlip==='Tails' && tailsBtn.innerText === 'Tails') {
+          return 
+      }
+  
   }, 3000);
 });
 
