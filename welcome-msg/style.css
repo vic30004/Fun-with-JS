@@ -39,3 +39,12 @@ body{
 .time{
     margin-bottom: 1rem;
 }
+
+button{
+    background:rgb(231, 198, 155);
+    padding: 0.5rem 0.75rem;
+    border: solid 2px #111;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
