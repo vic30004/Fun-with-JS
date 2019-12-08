@@ -5,21 +5,77 @@
 
 body{
     overflow: hidden;
+
 }
+
+li{
+    list-style-type: none;
+}
+span{
+    text-transform: capitalize;
+}
+
+.wrapper{
+    background:rgb(211, 189, 161);
+    height: 100vh;
+    text-align: center;
+}
+
+.container{
+    background: #111;
+    color: #fff;
+}
+
+#welcome{
+    padding: 3rem 0;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#welcome h1{
+    margin: 1rem 0 ;
+}
+
+#welcome p{
+    font-size: 1.2rem;
+}
+
+#score{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: rgb(102, 102, 104);
+    padding: 1rem 0;
+}
+
+#score ul{
+    display: flex;
+
+}
+
+#score ul li{
+    margin: 0 1rem;
+}
+
+
 
 #animation{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     height: 50vh;
-    
+    margin: 1rem 0;
+    padding: 2rem 0;
 }
 .animationRun{
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 50vh;
-    animation: 1s linear 0s 3 alternate play
+    animation: 1s linear 0s 3 alternate play;
+    margin: 1rem 0;
 }
 img{
     width:400px;
@@ -30,6 +86,18 @@ img{
 .pChoice{
     transform: scaleX(-1);
     
+}
+
+button{
+    padding: 0.5rem 0.75rem;
+    margin:0 0.75rem;
+    background:rgb(223, 151, 57) ;
+    border:2px solid #111;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
 }
 
 @keyframes play{

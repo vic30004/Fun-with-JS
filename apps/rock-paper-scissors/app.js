@@ -96,7 +96,7 @@ buttons.forEach(button =>
         result.innerText = `It's a draw`;
         setTimeout(() => {
           result.innerText = '';
-        }, 1500);
+        }, 1000);
         return;
       } else if (
         (pChoice === 'paper' && bChoice === 'rock') ||
@@ -108,7 +108,7 @@ buttons.forEach(button =>
         result.innerText = 'Player wins';
         setTimeout(() => {
           result.innerText = '';
-        }, 1500);
+        }, 1000);
         return;
       } else if (
         (pChoice === 'scissors' && bChoice === 'rock') ||
@@ -120,7 +120,7 @@ buttons.forEach(button =>
         result.innerText = 'Bot wins';
         setTimeout(() => {
           result.innerText = '';
-        }, 1500);
+        }, 1000);
         return;
       } else {
         return (result.innerText = 'Something Went Wrong');
