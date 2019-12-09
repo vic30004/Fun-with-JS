@@ -87,6 +87,7 @@ const reset = ()=>{
     score2.innerText=0;
     p1.src ='https://upload.wikimedia.org/wikipedia/commons/2/2c/Alea_1.png';
     p2.src='https://upload.wikimedia.org/wikipedia/commons/2/2c/Alea_1.png';
+    message.innerText='';
 }
 
 buttons.forEach(button => {
