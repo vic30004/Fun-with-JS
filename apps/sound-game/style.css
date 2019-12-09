@@ -1,0 +1,30 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+}
+
+body{
+    height: 100vh;
+    background: #111;
+    color: ivory;
+}
+
+img{
+    width: 300px;
+}
+
+#info{
+    margin: 1rem 0;
+}
+
+#info p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#animals{
+    padding: 2rem 0;
+}
