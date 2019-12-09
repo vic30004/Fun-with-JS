@@ -19,3 +19,7 @@ https://coin-flip.s3-us-west-1.amazonaws.com/coin-flip/index.html
 # Rock-Paper-Scissors
 
 https://rock-paper-scissors-v1.s3-us-west-1.amazonaws.com/rock-paper-scissors/index.html
+
+# Dice-Game 
+
+https://dice-game-v1.s3-us-west-1.amazonaws.com/dice-game/index.html
