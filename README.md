@@ -16,6 +16,6 @@ https://dynamic-message.s3-us-west-1.amazonaws.com/welcome-msg/index.html
 https://coin-flip.s3-us-west-1.amazonaws.com/coin-flip/index.html
 
 
-# Rock-Paper=Scissors
+# Rock-Paper-Scissors
 
 https://rock-paper-scissors-v1.s3-us-west-1.amazonaws.com/rock-paper-scissors/index.html
