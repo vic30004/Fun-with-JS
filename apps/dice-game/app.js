@@ -18,3 +18,29 @@ const randomRoll = () =>{
 
     return result
 }
+
+const roll = ()=> {
+    let player1 = randomRoll();
+    let player2 = randomRoll();
+
+    if (player1>player2){
+        return console.log(`Player one rolled ${player1} and player 2 rolled ${player2}. Player 1 wins`)
+    }else if(player1<player2){
+        return console.log(`Player two rolled ${player2} and player 1 rolled ${player1}. Player 2 wins`)
+    }else if (player1 === player2){
+        return console.log(`It's a tie! Both players rolled ${player1}`)
+    }else{
+        return console.log('Something Went Wrong')
+    }
+}
+
+buttons.forEach(button =>{
+    button.addEventListener('click',(e)=>{
+        let clickedBtn = e.target.innerText.toLowerCase()
+        
+        if (clickedBtn === 'roll'){
+            roll()
+        }
+    })
+})
+
