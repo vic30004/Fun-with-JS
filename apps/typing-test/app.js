@@ -12,7 +12,7 @@ let copy = [...textLibrary]
 
 const button = document.querySelector('button');
 const showText = document.querySelector('#type')
-
+const textArea = document.querySelector('textarea')
 
 
 
@@ -42,8 +42,26 @@ const reset=()=>{
     console.log(textLibrary)
 }
 
+const hashTable  = (str) =>{
+    let table = {};
+    let clearnStr = str.split();
+    console.log(clearnStr)
+    for (char of clearnStr){
+        if(table[char]){
+            table[char]++
+        }else{
+            table[char]
+        }
+    }
+    console.log(table)
+}
+
 button.addEventListener('click', ()=>{
+    let correctText = hashTable(showText.innerText);
+    let userText = {};
+
     
+
     if(button.innerText === 'Submit'){
         typeText(textLibrary)
         console.log(textLibrary)
