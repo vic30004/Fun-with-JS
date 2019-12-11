@@ -1,11 +1,6 @@
 let textLibrary = [
-        'Beethoven was born in Bonn, the capital of the Electorate of Cologne, and part of the Holy Roman Empire. He displayed his musical talents at an early age and was vigorously taught by his father Johann van Beethoven, and was later taught by composer and conductor Christian Gottlob Neefe. At age 21, he moved to Vienna and studied composition with Joseph Haydn. Beethoven then gained a reputation as a virtuoso pianist, and was soon courted by Karl Alois, Prince Lichnowsky for compositions, which resulted in Opus 1 in 1795.',
-        `Weezer is an American rock band formed in Los Angeles, California in 1992. Since 2001, the band has consisted of Rivers Cuomo (lead vocals, lead guitar, keyboards), Patrick Wilson (drums), Brian Bell (guitar, backing vocals, keyboards), and Scott Shriner (bass, backing vocals).
-      
-        After signing to Geffen Records in 1993, Weezer released its debut self-titled album, also known as the "Blue Album", in 1994. Backed by music videos for the singles "Buddy Holly", "Undone – The Sweater Song", and "Say It Ain't So", the Blue Album became a multiplatinum success. Weezer's second album, Pinkerton (1996), featuring a darker, more abrasive sound, was a commercial failure and initially received mixed reviews, but went on to achieve cult status and critical acclaim years later. Both the Blue Album and Pinkerton are now frequently cited among the best albums of the 1990s. Following the tour for Pinkerton, bassist Matt Sharp left the band and Weezer went on hiatus.`,
-        `Weezer is an American rock band formed in Los Angeles, California in 1992. Since 2001, the band has consisted of Rivers Cuomo (lead vocals, lead guitar, keyboards), Patrick Wilson (drums), Brian Bell (guitar, backing vocals, keyboards), and Scott Shriner (bass, backing vocals).
-      
-        After signing to Geffen Records in 1993, Weezer released its debut self-titled album, also known as the "Blue Album", in 1994. Backed by music videos for the singles "Buddy Holly", "Undone – The Sweater Song", and "Say It Ain't So", the Blue Album became a multiplatinum success. Weezer's second album, Pinkerton (1996), featuring a darker, more abrasive sound, was a commercial failure and initially received mixed reviews, but went on to achieve cult status and critical acclaim years later. Both the Blue Album and Pinkerton are now frequently cited among the best albums of the 1990s. Following the tour for Pinkerton, bassist Matt Sharp left the band and Weezer went on hiatus.`,
+        `To be successful, you have to use each day as an opportunity to improve, to be better, to get a little bit closer to your goals. It might sound like a lot of work—and with a busy schedule, next to impossible. But the best part is, the more you accomplish, the more you’ll want to do, the higher you’ll want to reach. So as long as you have the hunger for success, you will always have the power within you to achieve it.`,
+        `If you look closely, you’ll notice the energy of inspiration is all around. From the rising sun to a placid lake on a warm summer night; from our favorite books to our own reflections, the places and things from which we can draw inspiration are infinite. And the best part is that every day is a chance to capture this energy—to seek out all of life’s possibilities.`,
       ];
 let copy = [...textLibrary]
 
@@ -13,6 +8,7 @@ let copy = [...textLibrary]
 const button = document.querySelector('button');
 const showText = document.querySelector('#type')
 const textArea = document.querySelector('textarea')
+
 
 
 
@@ -43,26 +39,35 @@ const reset=()=>{
 }
 
 const hashTable  = (str) =>{
-    let table = {};
-    let clearnStr = str.split();
-    console.log(clearnStr)
-    for (char of clearnStr){
-        if(table[char]){
-            table[char]++
-        }else{
-            table[char]
-        }
+    if(str === ''){
+        return 
     }
-    console.log(table)
+    let table = {};
+    let clearnStr = str.replace(/[^\w]/g,' ').split(' ');
+    for( char of clearnStr){
+        table[char] = table[char]+1||1 
+        delete table[""]
+    }
+   return table
 }
 
 button.addEventListener('click', ()=>{
     let correctText = hashTable(showText.innerText);
-    let userText = {};
-
-    
+    let userText = hashTable(textArea.value);
+    let count =0;
+    console.log(correctText);
+    console.log(userText)
 
     if(button.innerText === 'Submit'){
+        for (text in correctText){
+            if(correctText[text]!= userText[text]){
+         
+                count++;
+                console.log(text)
+                console.log(count)
+            }
+        }
+        textArea.value=''
         typeText(textLibrary)
         console.log(textLibrary)
     }else if(button.innerText === 'Reset'){
