@@ -33,7 +33,7 @@ typeText(textLibrary)
 const reset=()=>{
     let test = [...copy];
     textLibrary= test
-    button.innerText='Submit'
+    button.innerText='Start'
     typeText(textLibrary)
     console.log(textLibrary)
 }
@@ -51,17 +51,27 @@ const hashTable  = (str) =>{
    return table
 }
 
+const getTime = () =>{
+    let date = new Date();
+    let startTime = date.getTime();
+    button.innerText='Done'
+}
+
 button.addEventListener('click', ()=>{
+    if(button.innerText!= 'Start'){
+       getTime() 
+    }
+    
     let correctText = hashTable(showText.innerText);
     let userText = hashTable(textArea.value);
     let count =0;
     console.log(correctText);
     console.log(userText)
 
-    if(button.innerText === 'Submit'){
-        for (text in correctText){
-            if(correctText[text]!= userText[text]){
-         
+    if(button.innerText === 'Start'){
+        button.innerText= 'Done'
+        for (text in userText){
+            if(userText[text]!= correctText[text]){
                 count++;
                 console.log(text)
                 console.log(count)
