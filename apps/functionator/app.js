@@ -42,6 +42,8 @@ document.addEventListener("keydown", (e)=>{
     }else if (e.key === "c" || e.key === "C"){
         myBlock.style.backgroundColor = randomColor()
         
+    }else if(e.key==="Enter"){
+        mover()
     }
     else {
         return
@@ -54,17 +56,41 @@ const randomColor = ()=>{
     return "#"+Math.random().toString(16).substr(-6)
 }
 
+function mover(){
+    if(funList.length>0){
+        let curr = myBlock.getBoundingClientRect();
+        let el = funList.shift();
+        let item = el.textContent.replace("+","").toLowerCase();
+        myFunctionList.removeChild(el)
+        if(item === "left"){
+            myBlock.style.left = curr.left - curr.width +"px"
+        }else if(item === "right"){
+            myBlock.style.left = curr.left + curr.width +"px"
+        }
+        else if(item === "up"){
+            myBlock.style.top= curr.top - curr.height +"px"
+        }
+        else if(item === "down"){
+            myBlock.style.top = curr.top + curr.height +"px"
+        }
+        setTimeout(mover,300)
+    }
+}
+
 const addFun=val=>{
-    funList.push(val)
     let span = document.createElement("span");
     span.textContent = "+"+val;
     span.style.padding = "10px";
     span.style.border = "1px solid #ddd"
-    myFunctionList.appendChild(span)
+    
     span.addEventListener("mouseover",()=>{
         span.style.backgroundColor="red";
        span.style.color="white"
     })
+
+myFunctionList.appendChild(span)
+funList.push(span);
+
 }
 
 const goLeft = () =>{
