@@ -88,12 +88,12 @@ button.addEventListener('click', () => {
     playGame();
   } else if (button.innerText === 'Done') {
     textArea.disabled = true;
-    button.innerText = 'Start';
+    button.innerText = 'Reset';
     
     typeText(textLibrary);
     
     endGame();
-    for (text in userText) {
+    for (text in correctText) {
       if (userText[text] != correctText[text]) {
         count++;
         console.log(count)
