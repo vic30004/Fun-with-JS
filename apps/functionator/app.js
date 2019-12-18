@@ -1,6 +1,7 @@
 let myBlock;
 let myFunctionList;
 let funList = [];
+const movementArr = ["right","left","up","down"]
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('hello');
@@ -44,6 +45,9 @@ document.addEventListener("keydown", (e)=>{
         
     }else if(e.key==="Enter"){
         mover()
+    }else if(e.key==="r" || e.key==="R"){
+        let temp =movementArr[Math.floor(Math.random()*movementArr.length)]
+        addFun(temp)
     }
     else {
         return
@@ -87,10 +91,22 @@ const addFun=val=>{
         span.style.backgroundColor="red";
        span.style.color="white"
     })
+    span.addEventListener("mouseout",()=>{
+        span.style.backgroundColor="white";
+       span.style.color="black"
+    })
+
+    span.addEventListener("click",function(){
+        let currIndex = funList.indexOf(this);
+        console.log(currIndex)
+        let temRemove= funList.splice(currIndex,1);
+        myFunctionList.removeChild(this)
+        
+    })
 
 myFunctionList.appendChild(span)
-funList.push(span);
 
+funList.push(span);
 }
 
 const goLeft = () =>{
