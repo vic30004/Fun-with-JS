@@ -3,7 +3,7 @@ const startBtn = document.querySelector("#start");
 
 
 startBtn.addEventListener("click", () => {
-  addNumInput(5);
+  addNumInput(6);
   startBtn.innerText="Guess"
 });
 
@@ -16,3 +16,16 @@ const addNumInput = num => {
     codeArea.appendChild(numbers);
   }
 };
+
+
+const randomNumber= ()=>{
+    return Math.floor(Math.random()*1000000)
+}
+
+
+const numToList = (num)=>{
+    let list= num.toString().split('')
+    
+    console.log(list)
+}
+numToList(randomNumber())
