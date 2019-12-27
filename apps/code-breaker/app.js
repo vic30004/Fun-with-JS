@@ -7,6 +7,7 @@ let score = 0;
 startBtn.addEventListener("click", () => {
   if(startBtn.innerText==='Start'|| startBtn.innerText==='Reset'){
     codeArea.innerHTML=""
+    score=0
     startBtn.innerText="Guess"
     addNumInput(6)
   
@@ -32,9 +33,9 @@ startBtn.addEventListener("click", () => {
       if(winCondition === numbers.length){
         console.log("game over")
         startBtn.innerText='Reset'
-        console.log(score)
-        score=0
-        
+        let endText = document.createElement('h2')
+        endText.innerText=`You cracked the code.It took you ${score} guesses to crack it!`
+        codeArea.prepend(endText)
       }
     }
   }
