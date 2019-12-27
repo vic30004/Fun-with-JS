@@ -11,7 +11,10 @@ startBtn.addEventListener("click", () => {
     addNumInput(6)
   
     
-  }else if(startBtn.innerText==="Guess"){
+  }
+ 
+  else if(startBtn.innerText==="Guess"){
+    score++
     const numbers = document.querySelectorAll(".numb")
     let winCondition = 0;
     for (let i=0; i<numbers.length; i++){
@@ -24,13 +27,12 @@ startBtn.addEventListener("click", () => {
       }else if (numbers[i].value==numbers[i].correct){
         numbers[i].style.background="green"
         numbers[i].style.color="white"
-        score++
         winCondition++;
-        console.log(score)
       }
       if(winCondition === numbers.length){
         console.log("game over")
         startBtn.innerText='Reset'
+        console.log(score)
         score=0
         
       }
