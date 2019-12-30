@@ -38,7 +38,6 @@ const reset = () => {
   textArea.value=''
   button.innerText = 'Start';
   typeText(textLibrary);
-  console.log(textLibrary);
   count=0;
   wrong.innerHTML='';
   time.innerText='';
@@ -61,21 +60,15 @@ const hashTable = str => {
 const playGame = () => {
   let date = new Date();
   startTime = date.getTime();
-  console.log(startTime)
   button.innerText = 'Done';
 };
 
 const endGame = () => {
   let date = new Date();
   endTime = date.getTime();
-  console.log(startTime,endTime)  
   let totalTime = ((endTime - startTime)/1000)
-  console.log(totalTime)
   let str = textArea.value.split(' ').length;
-  console.log(textArea.value)
-  console.log(str)
   let speed = Math.round((str / totalTime)*60)  
-  console.log(speed)
   time.innerText = `You typed at ${speed} words per minute.\n`;
 };
 
@@ -96,7 +89,6 @@ button.addEventListener('click', () => {
     for (text in correctText) {
       if (userText[text] != correctText[text]) {
         count++;
-        console.log(count)
         message.innerText = `You got ${count} wrong answers. Here is what you misspelled`;
         let wrongWords = `<li>${text}</li> `;
         wrong.innerHTML += wrongWords;
