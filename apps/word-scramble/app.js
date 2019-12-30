@@ -1,14 +1,20 @@
 const wordList = ["Hello", "World", "Apple", "Zelous"];
 let copy = [...wordList];
 
+let button = document.querySelector('button')
+const input = document.querySelector('input')
+let guessWord = document.querySelector('#word')
+let currentWord
+
 const randomWord = () => {
-  if (wordList) {
+  if (wordList.length>=0) {
     let word = wordList[Math.floor(Math.random() * wordList.length)];
     let indexWord = wordList.indexOf(word);
     if (indexWord >-1){
     wordList.splice(indexWord, 1); 
       
     }
+    currentWord=word
     return word;
   } else {
     return;
@@ -16,10 +22,10 @@ const randomWord = () => {
 };
 
 const shuffleWord = text =>{
-    console.log(text)
+    if (wordList){
     let textSplit=text.split('');
-    var currentIndex = textSplit.length;
-	var temporaryValue, randomIndex;
+    let currentIndex = textSplit.length;
+	let temporaryValue, randomIndex;
 
 	// While there remain elements to shuffle...
 	while (0 !== currentIndex) {
@@ -32,7 +38,47 @@ const shuffleWord = text =>{
 		textSplit[currentIndex] = textSplit[randomIndex];
 		textSplit[randomIndex] = temporaryValue;
     }
-    return console.log(textSplit)
+    return textSplit.join('')
+    }else if(wordList.length==false){
+        return
+    }
+    
 }
 
 
+
+button.addEventListener('click', ()=>{
+
+if (button.innerText.toLowerCase()==="guess"){
+  if(wordList.length>=0){
+    let text = randomWord();
+
+    let shuffledWord= shuffleWord(text);
+    
+    let textToGuess = document.createElement('h4')
+    textToGuess.innerText=shuffledWord
+    guessWord.append(textToGuess)
+    checkIfSame(currentWord,input.value)
+
+    }
+    else{
+        button.innerText="Reset"
+    }
+    }
+  
+ if(button.innerText.toLowerCase()==="rest"){
+    wordList=copy
+ }  
+  
+
+
+})
+
+
+const checkIfSame=(text1,text2)=>{
+    if(text1 === text2){
+        return console.log("Yup same")
+    }else{
+        return console.log("Nope try again")
+    }
+}
