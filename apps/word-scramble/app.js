@@ -6,10 +6,8 @@ const input = document.querySelector('input');
 let guessWord = document.querySelector('#word');
 let showWord = document.createElement('h3');
 let message = document.createElement('h4');
-guessWord.append(message)
-guessWord.append(showWord)
-
-
+guessWord.append(message);
+guessWord.append(showWord);
 
 let currentWord;
 let text;
@@ -55,7 +53,7 @@ const shuffleWord = text => {
 button.addEventListener('click', () => {
   if (wordList.length === 0) {
     button.innerText = 'Reset';
-    message.innerText='We ran out of words. You can always play again';
+    message.innerText = 'We ran out of words. You can always play again';
     input.value = '';
   }
 
@@ -63,26 +61,27 @@ button.addEventListener('click', () => {
     button.innerText = 'Guess';
     text = randomWord();
     shuffled = shuffleWord(text);
-    showWord.innerText = shuffled
+    showWord.innerText = shuffled;
     return;
   } else if (button.innerText.toLowerCase() === 'guess') {
     let check = checkIfSame(text, input.value);
     if (check) {
-      showWord.innerText=''
+      showWord.innerText = '';
       button.innerText = 'Play Again';
-       message.innerText = "It's the same";
+      message.innerText = "That's correct! Great job!!";
       input.value = '';
     } else {
       message.innerText = 'Nope, try again!';
-      setTimeout(()=>{message.innerText=''},2000)
-      
+      setTimeout(() => {
+        message.innerText = '';
+      }, 2000);
     }
   } else if (button.innerText.toLowerCase() === 'play again') {
-    message.innerText=''
+    message.innerText = '';
     text = randomWord();
     shuffled = shuffleWord(text);
     button.innerText = 'Guess';
-    showWord.innerText=shuffled
+    showWord.innerText = shuffled;
   } else if (button.innerText.toLowerCase() === 'reset') {
     wordList = copy;
     button.innerText = 'Start';
