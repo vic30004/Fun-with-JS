@@ -1,10 +1,12 @@
-const wordList = ["Hello", "World", "Apple", "Zelous"];
+let wordList = ["Hello", "World", "Apple", "Zelous"];
 let copy = [...wordList];
 
 let button = document.querySelector('button')
 const input = document.querySelector('input')
 let guessWord = document.querySelector('#word')
-let currentWord
+let currentWord;
+let text;
+let shuffled;
 
 const randomWord = () => {
   if (wordList.length>=0) {
@@ -49,36 +51,60 @@ const shuffleWord = text =>{
 
 button.addEventListener('click', ()=>{
 
-if (button.innerText.toLowerCase()==="guess"){
-  if(wordList.length>=0){
-    let text = randomWord();
-
-    let shuffledWord= shuffleWord(text);
-    
-    let textToGuess = document.createElement('h4')
-    textToGuess.innerText=shuffledWord
-    guessWord.append(textToGuess)
-    checkIfSame(currentWord,input.value)
-
-    }
-    else{
-        button.innerText="Reset"
-    }
-    }
   
- if(button.innerText.toLowerCase()==="rest"){
+  if (wordList.length===0){
+    button.innerText='Reset'
+    console.log("We ran out of words. You can always play again");
+    input.value=''
+    return
+  }
+
+
+  if (button.innerText.toLowerCase()==='start'){
+    button.innerText='Guess'
+    text=randomWord()
+    shuffled =shuffleWord(text)
+    console.log(shuffled)
+    return
+  }
+
+  else if(button.innerText.toLowerCase()=== 'guess'){
+   let check= checkIfSame(text,input.value)
+   if (check){
+     console.log("It's the same")
+     button.innerText="Play Again"
+     input.value=''
+   }
+   else{
+     console.log("Nope, try again!")
+   }
+
+ 
+  }  else if(button.innerText.toLowerCase()==="play again"){
+    text = randomWord()
+    shuffled =shuffleWord(text)
+    button.innerText="Guess"
+    console.log(shuffled)
+  }
+
+  else if(button.innerText.toLowerCase()==='reset'){
     wordList=copy
- }  
-  
+    button.innerText="Start"
+    input.value=''
+    return
+  }
+
+
 
 
 })
 
 
 const checkIfSame=(text1,text2)=>{
-    if(text1 === text2){
-        return console.log("Yup same")
+    if(text1.toLowerCase() === text2.toLowerCase()){
+        return true
     }else{
-        return console.log("Nope try again")
+        return false
     }
 }
+
