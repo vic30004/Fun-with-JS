@@ -3,36 +3,7 @@ const endDate = document.querySelector("input[name='endDate']");
 const clock = document.querySelector('.clock');
 let timeInterval;
 let timeStop = true;
-
-endDate.addEventListener('change', e => {
-  e.preventDefault();
-  clearInterval(timeInterval);
-  const temp = new Date(endDate.value);
-  startClock(temp);
-  timeStop = false;
-});
-
-const startClock = d => {
-  function updateCounter() {
-      let tl = timeLeft(d);
-      if(tl.total<=0){
-          timeStop=false;
-      }
-    
-    for (let prop in tl) {
-      let el = clock.querySelector('.' + prop);
-      if (el) {
-        el.innerHTML = tl[prop];
-      }
-    }
-  }
-  updateCounter();
-  if (timeStop) {
-    timeInterval = setInterval(updateCounter, 1000);
-  } else {
-    clearInterval(timeInterval);
-  }
-};
+const savedValue = localStorage.getItem('countDown') || false;
 
 const timeLeft = d => {
   let currentDate = new Date();
@@ -50,3 +21,42 @@ const timeLeft = d => {
     seconds: seconds
   };
 };
+
+const startClock = d => {
+  function updateCounter() {
+    let tl = timeLeft(d);
+    if (tl.total <= 0) {
+      timeStop = false;
+    }
+
+    for (let prop in tl) {
+      let el = clock.querySelector('.' + prop);
+      if (el) {
+        el.innerHTML = tl[prop];
+      }
+    }
+  }
+  updateCounter();
+  if (timeStop) {
+    timeInterval = setInterval(updateCounter, 1000);
+  } else {
+    clearInterval(timeInterval);
+  }
+};
+
+if (savedValue) {
+  startClock(savedValue);
+  let inputValue= new Date(savedValue);
+  console.log(inputValue)
+  endDate.valueAsDate=inputValue;
+
+}
+
+endDate.addEventListener('change', e => {
+  e.preventDefault();
+  clearInterval(timeInterval);
+  const temp = new Date(endDate.value);
+  localStorage.setItem('countDown', temp);
+  startClock(temp);
+  timeStop = false;
+});
