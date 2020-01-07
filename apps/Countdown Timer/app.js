@@ -1,33 +1,42 @@
 const endDate = document.querySelector("input[name='endDate']");
 
 const clock = document.querySelector('.clock');
+let timeInterval;
+let timeStop = true;
 
 endDate.addEventListener('change', e => {
   e.preventDefault();
-  console.log(endDate.value);
+  clearInterval(timeInterval);
   const temp = new Date(endDate.value);
-  console.log(temp);
   startClock(temp);
+  timeStop = false;
 });
 
 const startClock = d => {
-  let tl=timeLeft(d);
-  console.log(tl.days)
-  for(let prop in tl){
-        console.log(tl[prop])
-        let el = clock.querySelector("."+prop);
-        if(el){
-            el.innerHTML=tl[prop]
-        }
+  function updateCounter() {
+      let tl = timeLeft(d);
+      if(tl.total<=0){
+          timeStop=false;
+      }
+    
+    for (let prop in tl) {
+      let el = clock.querySelector('.' + prop);
+      if (el) {
+        el.innerHTML = tl[prop];
+      }
+    }
+  }
+  updateCounter();
+  if (timeStop) {
+    timeInterval = setInterval(updateCounter, 1000);
+  } else {
+    clearInterval(timeInterval);
   }
 };
 
 const timeLeft = d => {
   let currentDate = new Date();
-  // console.log(currentDate)
-  // console.log(Date.parse(currentDate))
   let t = Date.parse(d) - Date.parse(currentDate);
-  console.log(t);
   let seconds = Math.floor((t / 1000) % 60);
   let minutes = Math.floor((t / 1000 / 60) % 60);
   let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
