@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background: #111;
+    color: ivory;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.wrapper #intro{
+    text-transform: capitalize;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.wrapper input{
+    margin: 1rem;
+    padding: 0.75rem 1.2rem;
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    font-style: inherit;
+}
+
+.wrapper .days, .minutes, .hours,.seconds{
+    color: lawngreen;
+    font-size: 2rem;
+}
+
+.wrapper .clock{
+    word-spacing: 1.2px;
+}
