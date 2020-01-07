@@ -5,13 +5,21 @@ const clock = document.querySelector('.clock');
 endDate.addEventListener('change', e => {
   e.preventDefault();
   console.log(endDate.value);
-  const temp = new Date();
+  const temp = new Date(endDate.value);
   console.log(temp);
   startClock(temp);
 });
 
 const startClock = d => {
-  console.log(timeLeft(d));
+  let tl=timeLeft(d);
+  console.log(tl.days)
+  for(let prop in tl){
+        console.log(tl[prop])
+        let el = clock.querySelector("."+prop);
+        if(el){
+            el.innerHTML=tl[prop]
+        }
+  }
 };
 
 const timeLeft = d => {
