@@ -18,11 +18,23 @@ function player() {
   button.disabled = true;
   gameClicks = [];
   userClicks = [];
-  runSequence();
+  runSequence(playNum);
 }
 
-function runSequence() {
-    inPlay=true;
+function runSequence(num) {
+    let squares = document.querySelectorAll(".box");
+    num--;
+    if(num<0){
+        inPlay=true;
+        return;
+    }
+    let randomNum= Math.floor(Math.random()*gameColor.length);
+    console.log(squares[randomNum]);
+    gameClicks.push(gameColor[randomNum])
+    squares[randomNum].style.opacity="1";
+    setTimeout(()=>{
+        squares[randomNum].style.opacity="0.5";
+    },500)
 }
 
 const checkAnswer = e => {
@@ -31,6 +43,7 @@ const checkAnswer = e => {
     console.log(el);
     userClicks.push(el.myColor);
     el.style.opacity="1";
+    
     setTimeout(()=>{
         el.style.opacity="0.5"
     },500);
